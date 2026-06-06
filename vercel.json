@@ -5,6 +5,7 @@
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
   ],
   "routes": [
+    { "src": "/api/youtube-video", "dest": "server.ts" },
     { "src": "/api/(.*)", "dest": "server.ts" },
     { "src": "/(.*\\.(js|css|ico|png|svg|json))", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
