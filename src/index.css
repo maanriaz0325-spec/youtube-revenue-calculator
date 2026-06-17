@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-desc: "Roboto", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F9FAFB;
+  color: #111827;
+}
+
+.corner-red-box {
+  position: relative;
+  background: #fff;
+  border: 1px solid #f3f4f6;
+}
+
+.corner-red-box::before,
+.corner-red-box::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: #ef4444;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.corner-red-box::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.corner-red-box::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.revenue-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}

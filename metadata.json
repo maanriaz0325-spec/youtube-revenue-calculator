@@ -1,0 +1,8 @@
+{
+  "name": "YouTube Revenue Calculator",
+  "description": "An authentic YouTube video revenue analysis tool with deep niche, geography, and duration-based calculation logic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
