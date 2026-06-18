@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { calculateRevenue } from "./src/lib/youtubeLogic";
@@ -85,9 +84,6 @@ async function generateContentWithFallbackAndRetry(
 
 const app = express();
 app.use(express.json());
-
-async function startServer() {
-  const PORT = 3000;
 
   // API Route for YouTube Proxy & Deep Analysis
   app.get("/api/youtube-video", async (req, res) => {
