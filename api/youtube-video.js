@@ -49,7 +49,12 @@ module.exports = async function handler(req, res) {
       subscriberCount: parseInt(channelItem?.statistics?.subscriberCount || "0"),
     };
 
-    // Gemini AI Analysis
+    // Import calculateRevenue (compiled at build time from TS source)
+    const { calculateRevenue } = require("../src/lib/youtubeLogic");
+
+    let calculated = calculateRevenue(videoResult);
+
+    // Gemini AI Analysis (enrichment layer)
     const geminiKey = process.env.GEMINI_API_KEY;
     if (geminiKey) {
       try {
@@ -93,18 +98,17 @@ Return ONLY this JSON:
         const jsonEnd = text.lastIndexOf("}");
         const analysis = JSON.parse(text.substring(jsonStart, jsonEnd + 1));
 
-        return res.json({
-          ...videoResult,
-          aiAnalysis: analysis
-        });
+        if (analysis.customNicheName) calculated.videoInfo.customNicheName = analysis.customNicheName;
+        if (analysis.trafficDistribution) calculated.videoInfo.countryDistribution = analysis.trafficDistribution;
+        if (analysis.optimizationActionPoints) calculated.videoInfo.optimizationActionPoints = analysis.optimizationActionPoints;
 
       } catch (geminiError) {
         console.error("Gemini error:", geminiError);
-        return res.json(videoResult);
+        // continue with calculated (non-AI-enriched) result
       }
     }
 
-    return res.json(videoResult);
+    return res.json(calculated);
 
   } catch (error) {
     console.error("Error:", error);
