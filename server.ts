@@ -319,14 +319,16 @@ You must return a JSON response adhering strictly to the provided responseSchema
     }
   });
 
+  // ... route code ...
+
   const distPath = path.join(process.cwd(), "dist");
   app.use(express.static(distPath));
   app.get("*", (req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
   });
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(3000, () => console.log("Local: http://localhost:3000"));
 }
 
-startServer();
-
-app.listen(3000, () => console.log("Local: http://localhost:3000"));
 export default app;
