@@ -1,11 +1,11 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/youtube-video.ts", "use": "@vercel/node" },
+    { "src": "api/youtube-video.js", "use": "@vercel/node" },
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
   ],
   "routes": [
-    { "src": "/api/youtube-video", "dest": "/api/youtube-video.ts" },
+    { "src": "/api/youtube-video", "dest": "/api/youtube-video.js" },
     { "src": "/(.*\\.(js|css|ico|png|svg|json))", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
