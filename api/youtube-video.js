@@ -50,8 +50,7 @@ module.exports = async function handler(req, res) {
     };
 
     // Import calculateRevenue (compiled at build time from TS source)
-    const { calculateRevenue } = require("../src/lib/youtubeLogic");
-
+const { calculateRevenue } = await import("../src/lib/youtubeLogic.js");
     let calculated = calculateRevenue(videoResult);
 
     // Gemini AI Analysis (enrichment layer)
