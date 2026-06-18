@@ -2,8 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
-import { calculateRevenue } from "./src/lib/youtubeLogic";
-
+import { calculateRevenue } from "./src/lib/youtubeLogic.js";
 dotenv.config();
 
 // Initialize Google GenAI with recommended telemetry headers
