@@ -3,12 +3,12 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "functions": {
-    "api/*.ts": {
-      "runtime": "@vercel/node"
+    "api/youtube-video.ts": {
+      "runtime": "nodejs20.x"
     }
   },
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
+  "rewrites": [
+    { "source": "/api/youtube-video", "destination": "/api/youtube-video" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
