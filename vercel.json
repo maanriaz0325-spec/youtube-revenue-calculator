@@ -2,13 +2,8 @@
   "version": 2,
   "buildCommand": "vite build",
   "outputDirectory": "dist",
-  "functions": {
-    "api/youtube-video.ts": {
-      "runtime": "nodejs20.x"
-    }
-  },
   "rewrites": [
-    { "source": "/api/youtube-video", "destination": "/api/youtube-video" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
